@@ -5,6 +5,7 @@ import MyNavbar from '../../components/navbar/Navbar'
 import { Col, Container, Row } from 'react-bootstrap'
 import imgProgramming from './../../assets/images/programming.svg'
 import CourseItem from "./../../components/course/CourseItem"
+import Footer from "../../components/footer/Footer"
 
 const Home = () => {
   const [courses , setCourses] = useState([
@@ -67,6 +68,7 @@ const Home = () => {
           <Col></Col>
         </Row>
       </Container>
+      <Footer/>
     </div>
   )
 }
