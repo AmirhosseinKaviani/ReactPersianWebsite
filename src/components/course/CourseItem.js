@@ -1,8 +1,11 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
+import './CourseItem.css'
 
-const CourseItem = ({title,img,text}) => {
+const CourseItem = ({id,title,img,text}) => {
+
   return (
     <div>
     <Card>
@@ -12,7 +15,9 @@ const CourseItem = ({title,img,text}) => {
         <Card.Text>
         {text}
         </Card.Text>
-        <Button variant="primary">خرید دوره</Button>
+        <Button variant="primary">
+          <Link to={`/course/${id}`} className='buy-btn'>خرید دوره</Link>
+        </Button>
       </Card.Body>
     </Card>
     </div>
