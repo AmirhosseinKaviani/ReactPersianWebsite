@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { NavLink } from "react-router-dom";
 import './navbar.css'
+import { isLogin } from '../../pages/utils';
 
 const MyNavbar = () => {
   const expand = 'md'
+  const [loginstatus, setLoginStatus]=useState(isLogin() ? "خروج" : "ورود")
+  const loginHandler=()=>{
+    document.cookie = "username=admin; expires=Thu, 18 Dec 2020 12:00:00 UTC; path=/";
+    setLoginStatus("ورود")
+  }
   return (
     <Navbar style={{backgroundColor:'rgb(186,183,253)'}} expand={expand} className="mb-3">
     <Container>
@@ -37,9 +43,11 @@ const MyNavbar = () => {
               <NavLink to="/panel" className="nav-link">
                 پنل
               </NavLink>
-              <NavLink to="/login" className="nav-link">
-                ورود
-              </NavLink>
+              {
+                isLogin() ?
+                <NavLink to="/login" onClick={loginHandler} className="nav-link">{loginstatus}</NavLink> :
+                <NavLink to="/login" className="nav-link">{loginstatus}</NavLink>
+              }
           </Nav>
         </Offcanvas.Body>
       </Navbar.Offcanvas>
