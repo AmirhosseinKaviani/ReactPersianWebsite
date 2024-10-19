@@ -4,6 +4,7 @@ import Login from './pages/login/Login'
 import Panel from './pages/panel/Panel'
 import Course from './pages/course/Course'
 import About from './pages/about/About'
+import PrivateRoute from './components/PrivateRoute'
 
 const routes=[
     {path: "/", element: <Home/>},
@@ -12,7 +13,7 @@ const routes=[
               {path: "php", element:<h2>Php article</h2>},
               {path:"react", element:<h2>react article</h2>}
     ]},
-    {path:"panel", element:<Panel/>},
+    {path:"panel", element:<PrivateRoute><Panel/></PrivateRoute>},
     {path: "/login", element: <Login/>},
     {path: "/course/:courseId", element:<Course/>},
     {path: "/about", element:<About/>}
